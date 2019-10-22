@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="statistics" targetNamespace="http://tempuri.org/statistics.xsd" xmlns:mstns="http://tempuri.org/statistics.xsd" xmlns="http://tempuri.org/statistics.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\database\eu.mdf;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="eu.mdf" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MenuPopTableAdapter" GeneratorDataComponentClassName="MenuPopTableAdapter" Name="MenuPop" UserDataComponentName="MenuPopTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="eu.mdf" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT bookings_meals.menu_id, bookings_meals.no_of_meals, meat.stock_name, veg1.stock_name AS Expr1, veg2.stock_name AS Expr2, drink.stock_name AS Expr3, menus.menu_price
+FROM            bookings_meals CROSS JOIN
+                         menus INNER JOIN
+                         menus AS menus_1 ON bookings_meals.menu_id = menus.menu_id INNER JOIN
+                         raw_stock AS meat ON menus.menu_meat_id = meat.stock_id INNER JOIN
+                         raw_stock AS veg1 ON menus.menu_veg_1_id = veg1.stock_id INNER JOIN
+                         raw_stock AS veg2 ON menus.menu_veg_2_id = veg2.stock_id INNER JOIN
+                         raw_stock AS drink ON menus.menu_drink_id = drink.stock_id
+ORDER BY bookings_meals.no_of_meals DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="menu_id" DataSetColumn="menu_id" />
+              <Mapping SourceColumn="no_of_meals" DataSetColumn="no_of_meals" />
+              <Mapping SourceColumn="stock_name" DataSetColumn="stock_name" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+              <Mapping SourceColumn="menu_price" DataSetColumn="menu_price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="statistics" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="statistics" msprop:Generator_UserDSName="statistics">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MenuPop" msprop:Generator_TableClassName="MenuPopDataTable" msprop:Generator_TableVarName="tableMenuPop" msprop:Generator_TablePropName="MenuPop" msprop:Generator_RowDeletingName="MenuPopRowDeleting" msprop:Generator_RowChangingName="MenuPopRowChanging" msprop:Generator_RowEvHandlerName="MenuPopRowChangeEventHandler" msprop:Generator_RowDeletedName="MenuPopRowDeleted" msprop:Generator_UserTableName="MenuPop" msprop:Generator_RowChangedName="MenuPopRowChanged" msprop:Generator_RowEvArgName="MenuPopRowChangeEvent" msprop:Generator_RowClassName="MenuPopRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="menu_id" msprop:Generator_ColumnVarNameInTable="columnmenu_id" msprop:Generator_ColumnPropNameInRow="menu_id" msprop:Generator_ColumnPropNameInTable="menu_idColumn" msprop:Generator_UserColumnName="menu_id" type="xs:int" />
+              <xs:element name="no_of_meals" msprop:Generator_ColumnVarNameInTable="columnno_of_meals" msprop:Generator_ColumnPropNameInRow="no_of_meals" msprop:Generator_ColumnPropNameInTable="no_of_mealsColumn" msprop:Generator_UserColumnName="no_of_meals" type="xs:int" />
+              <xs:element name="stock_name" msprop:Generator_ColumnVarNameInTable="columnstock_name" msprop:Generator_ColumnPropNameInRow="stock_name" msprop:Generator_ColumnPropNameInTable="stock_nameColumn" msprop:Generator_UserColumnName="stock_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr3" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="menu_price" msprop:Generator_ColumnVarNameInTable="columnmenu_price" msprop:Generator_ColumnPropNameInRow="menu_price" msprop:Generator_ColumnPropNameInTable="menu_priceColumn" msprop:Generator_UserColumnName="menu_price" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

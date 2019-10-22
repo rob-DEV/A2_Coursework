@@ -1,0 +1,105 @@
+﻿//create db
+CREATE DATABASE eu;
+
+//customer table
+CREATE TABLE customers (
+    cust_id        INT          IDENTITY (1, 1) NOT NULL,
+    cust_firstname VARCHAR (20) NOT NULL,
+    cust_lastname  VARCHAR (20) NOT NULL,
+    cust_add_1     VARCHAR (20) NOT NULL,
+    cust_add_2     VARCHAR (20) NULL,
+    cust_city      VARCHAR (15) NOT NULL,
+    cust_postcode  VARCHAR (8)  NOT NULL,
+    cust_phone     VARCHAR (15) NULL,
+    cust_email     VARCHAR (50) NULL,
+    cust_deleted   BIT          DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY (cust_id ASC)
+);
+
+//employee table
+CREATE TABLE employees (
+    emp_id        INT          IDENTITY (1, 1) NOT NULL,
+    emp_firstname VARCHAR (20) NOT NULL,
+    emp_lastname  VARCHAR (20) NOT NULL,
+    emp_dob       DATE         NOT NULL,
+    emp_add_1     VARCHAR (20) NOT NULL,
+    emp_add_2     VARCHAR (20) NULL,
+    emp_city      VARCHAR (15) NOT NULL,
+    emp_postcode  VARCHAR (8)  NOT NULL,
+    emp_phone     VARCHAR (15) NOT NULL,
+    emp_username  VARCHAR (20) NOT NULL,
+    emp_password  VARCHAR (30) NOT NULL,
+    emp_type      VARCHAR (20) NULL,
+    emp_deleted   BIT          NOT NULL,
+    PRIMARY KEY CLUSTERED (emp_id ASC)
+);
+
+//booking table
+CREATE TABLE bookings (
+    book_id          INT      IDENTITY (1, 1) NOT NULL,
+    book_no_people   INT      NOT NULL,
+    book_date_placed DATETIME NOT NULL,
+    book_date_event  DATETIME NOT NULL,
+    book_confirmed   BIT      NOT NULL,
+    book_paid        BIT      NOT NULL,
+    book_invoiced    BIT      DEFAULT ((0)) NOT NULL,
+    book_deleted     BIT      DEFAULT ((0)) NOT NULL,
+    cust_id          INT      NOT NULL,
+    emp_id           INT      NOT NULL,
+    PRIMARY KEY CLUSTERED (book_id ASC),
+    CONSTRAINT FK_bookings_customers FOREIGN KEY (cust_id) REFERENCES dbo.customers (cust_id),
+    CONSTRAINT FK_bookings_employees FOREIGN KEY (emp_id) REFERENCES dbo.employees (emp_id)
+);
+
+//suppliers table
+CREATE TABLE suppliers (
+    sup_id       INT          IDENTITY (1, 1) NOT NULL,
+    sup_name     VARCHAR (20) NOT NULL,
+    sup_add_1    VARCHAR (20) NOT NULL,
+    sup_add_2    VARCHAR (20) NULL,
+    sup_city     VARCHAR (20) NOT NULL,
+    sup_postcode VARCHAR (8)  NOT NULL,
+    sup_phone    VARCHAR (15) NULL,
+    sup_email    VARCHAR (50) NULL,
+    sup_deleted  BIT          DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED (sup_id ASC)
+);
+
+//raw_stock table
+CREATE TABLE raw_stock (
+    stock_id            INT            IDENTITY (1, 1) NOT NULL,
+    stock_name          VARCHAR (30)   NOT NULL,
+    stock_category      VARCHAR (20)   NOT NULL,
+    stock_qty           INT            NOT NULL,
+    stock_reorder_level INT            NOT NULL,
+    stock_price         DECIMAL (6, 2) NOT NULL,
+    stock_deleted       BIT            DEFAULT ((0)) NOT NULL,
+    sup_id              INT            NOT NULL,
+    PRIMARY KEY CLUSTERED (stock_id ASC),
+    CONSTRAINT FK_raw_stock_suppliers FOREIGN KEY (sup_id) REFERENCES dbo.suppliers (sup_id)
+);
+
+//menus
+CREATE TABLE menus (
+    menu_id       INT            IDENTITY (1, 1) NOT NULL,
+    menu_meat_id  INT            NOT NULL,
+    menu_veg_1_id INT            NOT NULL,
+    menu_veg_2_id INT            NOT NULL,
+    menu_drink_id INT            NOT NULL,
+    menu_price    DECIMAL (6, 2) NOT NULL,
+    CONSTRAINT PK_menus PRIMARY KEY CLUSTERED (menu_id ASC),
+    CONSTRAINT FK_menus_raw_stock FOREIGN KEY (menu_meat_id) REFERENCES dbo.raw_stock (stock_id),
+    CONSTRAINT FK_menus_raw_stock1 FOREIGN KEY (menu_veg_1_id) REFERENCES dbo.raw_stock (stock_id),
+    CONSTRAINT FK_menus_raw_stock2 FOREIGN KEY (menu_veg_2_id) REFERENCES dbo.raw_stock (stock_id),
+    CONSTRAINT FK_menus_raw_stock3 FOREIGN KEY (menu_drink_id) REFERENCES dbo.raw_stock (stock_id)
+);
+
+//booking meals
+CREATE TABLE bookings_meals (
+    book_id     INT NOT NULL,
+    menu_id     INT NOT NULL,
+    no_of_meals INT NOT NULL,
+    PRIMARY KEY CLUSTERED (book_id ASC, menu_id ASC),
+    CONSTRAINT FK_bookings_meals_menus FOREIGN KEY (menu_id) REFERENCES dbo.menus (menu_id),
+    CONSTRAINT FK_bookings_meals_bookings FOREIGN KEY (book_id) REFERENCES dbo.bookings (book_id)
+);

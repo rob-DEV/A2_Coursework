@@ -1,0 +1,9 @@
+﻿Events Unlimted Management System.
+The purpose of this application is to streamline the management of Bookings in the off-site catering aspect of Events Unlimite.
+You are currently on the Dashboard which provides navigation to each component of manageing a Booking.
+
+Customers - Allows the Employee to Add/Delete/Update each Customers details.
+Bookings - Allows the Employee to Create Bookings and link them to the client's Customer data. Allows invoices to be created and printed.
+Menu Editor - This provides the functionality to create and edit menus from items in the stock system. Prices can also be attached to each menu for calculations and a markup (profit) place on top.
+Stock - Manage the food stock that Events Unlimted hae at their diposal.
+Suppliers - Allows Stock to be attached to particular suppliers. Supplier contact details are stored and can be used to contact them.

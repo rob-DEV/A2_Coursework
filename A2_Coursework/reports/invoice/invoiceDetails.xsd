@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="invoiceDetails" targetNamespace="http://tempuri.org/invoiceDetails.xsd" xmlns:mstns="http://tempuri.org/invoiceDetails.xsd" xmlns="http://tempuri.org/invoiceDetails.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\database\eu.mdf;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="eu.mdf" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InvoiceDetailsTableAdapter" GeneratorDataComponentClassName="InvoiceDetailsTableAdapter" Name="InvoiceDetails" UserDataComponentName="InvoiceDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="eu.mdf" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        customers.cust_id, customers.cust_firstname, customers.cust_lastname, customers.cust_add_1, customers.cust_add_2, customers.cust_city, customers.cust_postcode, customers.cust_phone, customers.cust_email, 
+                         bookings.book_id, bookings.book_no_people, bookings.book_date_placed, bookings.book_date_event, bookings.book_confirmed, bookings.book_paid, employees.emp_firstname, employees.emp_lastname
+FROM            customers INNER JOIN
+                         bookings ON customers.cust_id = bookings.cust_id INNER JOIN
+                         employees ON bookings.emp_id = employees.emp_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cust_id" DataSetColumn="cust_id" />
+              <Mapping SourceColumn="cust_firstname" DataSetColumn="cust_firstname" />
+              <Mapping SourceColumn="cust_lastname" DataSetColumn="cust_lastname" />
+              <Mapping SourceColumn="cust_add_1" DataSetColumn="cust_add_1" />
+              <Mapping SourceColumn="cust_add_2" DataSetColumn="cust_add_2" />
+              <Mapping SourceColumn="cust_city" DataSetColumn="cust_city" />
+              <Mapping SourceColumn="cust_postcode" DataSetColumn="cust_postcode" />
+              <Mapping SourceColumn="cust_phone" DataSetColumn="cust_phone" />
+              <Mapping SourceColumn="cust_email" DataSetColumn="cust_email" />
+              <Mapping SourceColumn="book_id" DataSetColumn="book_id" />
+              <Mapping SourceColumn="book_no_people" DataSetColumn="book_no_people" />
+              <Mapping SourceColumn="book_date_placed" DataSetColumn="book_date_placed" />
+              <Mapping SourceColumn="book_date_event" DataSetColumn="book_date_event" />
+              <Mapping SourceColumn="book_confirmed" DataSetColumn="book_confirmed" />
+              <Mapping SourceColumn="book_paid" DataSetColumn="book_paid" />
+              <Mapping SourceColumn="emp_firstname" DataSetColumn="emp_firstname" />
+              <Mapping SourceColumn="emp_lastname" DataSetColumn="emp_lastname" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="eu.mdf" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="RetrieveBookingById" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="RetrieveBookingById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="RetrieveBookingById" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        customers.cust_id, customers.cust_firstname, customers.cust_lastname, customers.cust_add_1, customers.cust_add_2, customers.cust_city, customers.cust_postcode, customers.cust_phone, customers.cust_email, 
+                         bookings.book_id, bookings.book_no_people, bookings.book_date_placed, bookings.book_date_event, bookings.book_confirmed, bookings.book_paid, employees.emp_firstname, employees.emp_lastname
+FROM            customers INNER JOIN
+                         bookings ON customers.cust_id = bookings.cust_id INNER JOIN
+                         employees ON bookings.emp_id = employees.emp_id
+WHERE customers.cust_id = @cust_id AND bookings.book_id = @book_id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="cust_id" ColumnName="cust_id" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@cust_id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="cust_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="book_id" ColumnName="book_id" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@book_id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="book_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InvoiceMenusTableAdapter" GeneratorDataComponentClassName="InvoiceMenusTableAdapter" Name="InvoiceMenus" UserDataComponentName="InvoiceMenusTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="eu.mdf" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT bookings_meals.book_id, bookings_meals.menu_id, bookings_meals.no_of_meals, meat.stock_name, veg1.stock_name AS Expr1, veg2.stock_name AS Expr2, drink.stock_name AS Expr3, menus.menu_price
+FROM            bookings_meals CROSS JOIN
+                         menus INNER JOIN
+                         menus AS menus_1 ON bookings_meals.menu_id = menus.menu_id INNER JOIN
+                         raw_stock AS meat ON menus.menu_meat_id = meat.stock_id INNER JOIN
+                         raw_stock AS veg1 ON menus.menu_veg_1_id = veg1.stock_id INNER JOIN
+                         raw_stock AS veg2 ON menus.menu_veg_2_id = veg2.stock_id INNER JOIN
+                         raw_stock AS drink ON menus.menu_drink_id = drink.stock_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="book_id" DataSetColumn="book_id" />
+              <Mapping SourceColumn="menu_id" DataSetColumn="menu_id" />
+              <Mapping SourceColumn="no_of_meals" DataSetColumn="no_of_meals" />
+              <Mapping SourceColumn="stock_name" DataSetColumn="stock_name" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+              <Mapping SourceColumn="menu_price" DataSetColumn="menu_price" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="eu.mdf" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT  DISTINCT     bookings_meals.book_id, bookings_meals.menu_id, bookings_meals.no_of_meals, meat.stock_name, veg1.stock_name AS Expr1, veg2.stock_name AS Expr2, drink.stock_name AS Expr3, menus.menu_price
+FROM            bookings_meals CROSS JOIN
+                         menus INNER JOIN
+                         menus AS menus_1 ON bookings_meals.menu_id = menus.menu_id INNER JOIN
+                         raw_stock AS meat ON menus.menu_meat_id = meat.stock_id INNER JOIN
+                         raw_stock AS veg1 ON menus.menu_veg_1_id = veg1.stock_id INNER JOIN
+                         raw_stock AS veg2 ON menus.menu_veg_2_id = veg2.stock_id INNER JOIN
+                         raw_stock AS drink ON menus.menu_drink_id = drink.stock_id
+WHERE  bookings_meals.book_id = @book_id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="book_id" ColumnName="book_id" DataSourceName="[E:\SSD\A2_COURSEWORK\A2_COURSEWORK\DATABASE\EU.MDF].dbo.bookings_meals" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@book_id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="book_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="invoiceDetails" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="invoiceDetails" msprop:Generator_UserDSName="invoiceDetails">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="InvoiceDetails" msprop:Generator_TableClassName="InvoiceDetailsDataTable" msprop:Generator_TableVarName="tableInvoiceDetails" msprop:Generator_TablePropName="InvoiceDetails" msprop:Generator_RowDeletingName="InvoiceDetailsRowDeleting" msprop:Generator_RowChangingName="InvoiceDetailsRowChanging" msprop:Generator_RowEvHandlerName="InvoiceDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceDetailsRowDeleted" msprop:Generator_UserTableName="InvoiceDetails" msprop:Generator_RowChangedName="InvoiceDetailsRowChanged" msprop:Generator_RowEvArgName="InvoiceDetailsRowChangeEvent" msprop:Generator_RowClassName="InvoiceDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cust_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncust_id" msprop:Generator_ColumnPropNameInRow="cust_id" msprop:Generator_ColumnPropNameInTable="cust_idColumn" msprop:Generator_UserColumnName="cust_id" type="xs:int" />
+              <xs:element name="cust_firstname" msprop:Generator_ColumnVarNameInTable="columncust_firstname" msprop:Generator_ColumnPropNameInRow="cust_firstname" msprop:Generator_ColumnPropNameInTable="cust_firstnameColumn" msprop:Generator_UserColumnName="cust_firstname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_lastname" msprop:Generator_ColumnVarNameInTable="columncust_lastname" msprop:Generator_ColumnPropNameInRow="cust_lastname" msprop:Generator_ColumnPropNameInTable="cust_lastnameColumn" msprop:Generator_UserColumnName="cust_lastname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_add_1" msprop:Generator_ColumnVarNameInTable="columncust_add_1" msprop:Generator_ColumnPropNameInRow="cust_add_1" msprop:Generator_ColumnPropNameInTable="cust_add_1Column" msprop:Generator_UserColumnName="cust_add_1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_add_2" msprop:Generator_ColumnVarNameInTable="columncust_add_2" msprop:Generator_ColumnPropNameInRow="cust_add_2" msprop:Generator_ColumnPropNameInTable="cust_add_2Column" msprop:Generator_UserColumnName="cust_add_2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_city" msprop:Generator_ColumnVarNameInTable="columncust_city" msprop:Generator_ColumnPropNameInRow="cust_city" msprop:Generator_ColumnPropNameInTable="cust_cityColumn" msprop:Generator_UserColumnName="cust_city">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_postcode" msprop:Generator_ColumnVarNameInTable="columncust_postcode" msprop:Generator_ColumnPropNameInRow="cust_postcode" msprop:Generator_ColumnPropNameInTable="cust_postcodeColumn" msprop:Generator_UserColumnName="cust_postcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_phone" msprop:Generator_ColumnVarNameInTable="columncust_phone" msprop:Generator_ColumnPropNameInRow="cust_phone" msprop:Generator_ColumnPropNameInTable="cust_phoneColumn" msprop:Generator_UserColumnName="cust_phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cust_email" msprop:Generator_ColumnVarNameInTable="columncust_email" msprop:Generator_ColumnPropNameInRow="cust_email" msprop:Generator_ColumnPropNameInTable="cust_emailColumn" msprop:Generator_UserColumnName="cust_email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="book_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnbook_id" msprop:Generator_ColumnPropNameInRow="book_id" msprop:Generator_ColumnPropNameInTable="book_idColumn" msprop:Generator_UserColumnName="book_id" type="xs:int" />
+              <xs:element name="book_no_people" msprop:Generator_ColumnVarNameInTable="columnbook_no_people" msprop:Generator_ColumnPropNameInRow="book_no_people" msprop:Generator_ColumnPropNameInTable="book_no_peopleColumn" msprop:Generator_UserColumnName="book_no_people" type="xs:int" />
+              <xs:element name="book_date_placed" msprop:Generator_ColumnVarNameInTable="columnbook_date_placed" msprop:Generator_ColumnPropNameInRow="book_date_placed" msprop:Generator_ColumnPropNameInTable="book_date_placedColumn" msprop:Generator_UserColumnName="book_date_placed" type="xs:dateTime" />
+              <xs:element name="book_date_event" msprop:Generator_ColumnVarNameInTable="columnbook_date_event" msprop:Generator_ColumnPropNameInRow="book_date_event" msprop:Generator_ColumnPropNameInTable="book_date_eventColumn" msprop:Generator_UserColumnName="book_date_event" type="xs:dateTime" />
+              <xs:element name="book_confirmed" msprop:Generator_ColumnVarNameInTable="columnbook_confirmed" msprop:Generator_ColumnPropNameInRow="book_confirmed" msprop:Generator_ColumnPropNameInTable="book_confirmedColumn" msprop:Generator_UserColumnName="book_confirmed" type="xs:boolean" />
+              <xs:element name="book_paid" msprop:Generator_ColumnVarNameInTable="columnbook_paid" msprop:Generator_ColumnPropNameInRow="book_paid" msprop:Generator_ColumnPropNameInTable="book_paidColumn" msprop:Generator_UserColumnName="book_paid" type="xs:boolean" />
+              <xs:element name="emp_firstname" msprop:Generator_ColumnVarNameInTable="columnemp_firstname" msprop:Generator_ColumnPropNameInRow="emp_firstname" msprop:Generator_ColumnPropNameInTable="emp_firstnameColumn" msprop:Generator_UserColumnName="emp_firstname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="emp_lastname" msprop:Generator_ColumnVarNameInTable="columnemp_lastname" msprop:Generator_ColumnPropNameInRow="emp_lastname" msprop:Generator_ColumnPropNameInTable="emp_lastnameColumn" msprop:Generator_UserColumnName="emp_lastname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InvoiceMenus" msprop:Generator_TableClassName="InvoiceMenusDataTable" msprop:Generator_TableVarName="tableInvoiceMenus" msprop:Generator_RowChangedName="InvoiceMenusRowChanged" msprop:Generator_TablePropName="InvoiceMenus" msprop:Generator_RowDeletingName="InvoiceMenusRowDeleting" msprop:Generator_RowChangingName="InvoiceMenusRowChanging" msprop:Generator_RowEvHandlerName="InvoiceMenusRowChangeEventHandler" msprop:Generator_RowDeletedName="InvoiceMenusRowDeleted" msprop:Generator_RowClassName="InvoiceMenusRow" msprop:Generator_UserTableName="InvoiceMenus" msprop:Generator_RowEvArgName="InvoiceMenusRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="book_id" msprop:Generator_ColumnVarNameInTable="columnbook_id" msprop:Generator_ColumnPropNameInRow="book_id" msprop:Generator_ColumnPropNameInTable="book_idColumn" msprop:Generator_UserColumnName="book_id" type="xs:int" />
+              <xs:element name="menu_id" msprop:Generator_ColumnVarNameInTable="columnmenu_id" msprop:Generator_ColumnPropNameInRow="menu_id" msprop:Generator_ColumnPropNameInTable="menu_idColumn" msprop:Generator_UserColumnName="menu_id" type="xs:int" />
+              <xs:element name="no_of_meals" msprop:Generator_ColumnVarNameInTable="columnno_of_meals" msprop:Generator_ColumnPropNameInRow="no_of_meals" msprop:Generator_ColumnPropNameInTable="no_of_mealsColumn" msprop:Generator_UserColumnName="no_of_meals" type="xs:int" />
+              <xs:element name="stock_name" msprop:Generator_ColumnVarNameInTable="columnstock_name" msprop:Generator_ColumnPropNameInRow="stock_name" msprop:Generator_ColumnPropNameInTable="stock_nameColumn" msprop:Generator_UserColumnName="stock_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr3" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="menu_price" msprop:Generator_ColumnVarNameInTable="columnmenu_price" msprop:Generator_ColumnPropNameInRow="menu_price" msprop:Generator_ColumnPropNameInTable="menu_priceColumn" msprop:Generator_UserColumnName="menu_price" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:InvoiceMenus" />
+      <xs:field xpath="mstns:book_id" />
+      <xs:field xpath="mstns:menu_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
